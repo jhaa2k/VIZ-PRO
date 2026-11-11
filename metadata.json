@@ -1,0 +1,6 @@
+{
+  "name": "AUDIOVIS - Avee Player .viz Studio for Android",
+  "description": "Android music visualizer and Avee Player .viz template editor. Read, edit, live-preview, and export genuine .viz files with audio-reactive spectrums, waveforms, and video export.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

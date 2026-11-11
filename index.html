@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<title>AUDIOVIS - Avee Player .viz Studio for Android</title>
+<meta name="description" content="Android music visualizer and Avee Player .viz template editor. Read, edit, live-preview, and export genuine .viz files with audio-reactive spectrums, waveforms, and video export." />
+<meta property="og:title" content="AUDIOVIS - Avee Player .viz Studio for Android" />
+<meta property="og:description" content="Android music visualizer and Avee Player .viz template editor. Read, edit, live-preview, and export genuine .viz files with audio-reactive spectrums, waveforms, and video export." />
+<meta property="og:type" content="website" />
+<meta name="theme-color" content="#141416">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Archivo:wght@400;800&family=Roboto:wght@400;900&family=Montserrat:wght@400;800&family=Oswald:wght@400;700&family=Bebas+Neue&family=Anton&family=Poppins:wght@400;800&family=Playfair+Display:wght@400;800&family=Lobster&family=Pacifico&family=Orbitron:wght@400;800&family=Audiowide&family=Righteous&family=Press+Start+2P&family=Bungee&family=Permanent+Marker&family=Caveat:wght@400;700&family=Dancing+Script:wght@400;700&family=Abril+Fatface&family=Russo+One&family=Teko:wght@400;700&family=Space+Mono:wght@400;700&family=Cinzel:wght@400;800&family=Raleway:wght@400;800&display=swap">
+<script>
+  // Filter out noisy errors from third-party browser extensions (e.g., MetaMask, wallet injectors)
+  (function() {
+    function isExtensionError(err, source) {
+      var src = String(source || (err && (err.filename || err.stack)) || '');
+      var msg = String((err && (err.message || err.reason)) || err || '');
+      return (
+        src.indexOf('chrome-extension://') !== -1 ||
+        src.indexOf('moz-extension://') !== -1 ||
+        src.indexOf('safari-web-extension://') !== -1 ||
+        msg.indexOf('MetaMask') !== -1 ||
+        msg.indexOf('ethereum') !== -1 ||
+        msg.indexOf('Failed to connect to MetaMask') !== -1
+      );
+    }
+    window.addEventListener('error', function(event) {
+      if (isExtensionError(event.error || event, event.filename)) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        return true;
+      }
+    }, true);
+    window.addEventListener('unhandledrejection', function(event) {
+      var reason = event.reason;
+      if (isExtensionError(reason, reason && reason.stack)) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        return true;
+      }
+    }, true);
+  })();
+
+  if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js').catch(() => {});
+    });
+  }
+</script>
+</head>
+<body>
+<div id="root"></div>
+<script type="module" src="/src/main.tsx"></script>
+</body>
+</html>
